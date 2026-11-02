@@ -1,0 +1,196 @@
+/* =====================================================================
+   sudoku.css  -  your styles go here (Lab 02, Part 2)
+
+   Native CSS only: the box model, Flexbox, and custom properties. No
+   framework and no media queries. Fill in the rules under each heading
+   and match the screenshots in documentation_images/.
+   ===================================================================== */
+
+:root {
+  --color-hover: #f5dd90;       /* cell under the cursor */
+  --color-user-input: #f2f2f2;  /* a digit the player entered (Lab 06) */
+  --color-error: #f76c5e;       /* a conflicting digit (Lab 06) */
+  --header-bg: #2b2b2b;
+  --board-line: #cfcfcf;        /* thin lines between cells */
+  --block-line: #333;           /* thick lines between 3x3 blocks */
+  --digit: #4a4a4a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+  color: #222;
+}
+
+
+/* ---- site header / nav  (requirement 7) ---------------------------- */
+/* TODO: a Flexbox row on .site-header; push the nav right with
+   margin-left:auto; add flex-wrap so the nav drops below the brand on a
+   narrow screen (that's the whole responsive story - no media query). */
+
+
+#brand-image{
+   height : 2rem;
+   width : auto;
+}
+
+
+.site-header{
+   display: flex;
+   flex-wrap: wrap;
+   background-color : var(--header-bg);
+   padding: 1rem;
+}
+
+.site-header nav{
+   margin-left: auto;
+   display: flex;
+   gap: 1rem;
+}
+
+.site-header nav a{
+   color : white;
+   text-decoration : none;
+   size : 5rem
+}
+
+.site-header .brand{
+   display : flex;
+   gap : 1rem;
+   align-items: center;
+   text-decoration: none;
+   color : white
+}
+
+
+/* ---- the board  (requirement 5) ------------------------------------ */
+/* TODO: border-collapse the #board; size each cell and centre the digit;
+   thin cell borders + a THICK border around each 3x3 block
+   (td:nth-child(3n) and tr:nth-child(3n) td); a :hover colour.
+   Also add .user-input and .error rules now - Lab 06 switches them on. */
+main{
+   padding: 1rem;
+}
+#board {
+   border-collapse: collapse;
+   border: .2rem solid var(--block-line);
+   margin: auto;
+   
+}
+#board td {
+   width:min(10vw,3rem);
+   height:min(10vw, 3rem);
+   text-align: center;
+   text-align: center;
+   border: .1rem solid var(--board-line);
+   color: var(--digit)
+}
+
+
+#board tr:nth-child(3n) td {
+    border-bottom: .2rem solid var(--block-line);
+}
+
+#board td:nth-child(3n) {
+   border-right: .2rem solid var(--block-line);
+}
+
+#board td:hover {
+   background-color: var(--color-hover);
+}
+
+.user-input{
+   color: var(--color-user-input);
+}
+
+.error{
+   color: var(--color-error);
+}
+
+
+/* ---- the numbers palette  (requirement 6) -------------------------- */
+/* TODO: size + border the .palette cells; a :hover colour; and a
+   .active style for the selected digit (used in Lab 06). */
+
+#palette{
+   border-collapse: collapse;
+   margin: auto;
+   padding: 1rem;
+   margin-top: 1.5rem;
+}
+
+#palette td{
+   color: var(--digit);
+   width : min(8vw,2.5rem);
+   height : min(8vw,2.5rem);
+   text-align: center;
+   border: .1rem solid var(--block-line);
+}
+
+#palette td:hover {
+   background-color: var(--color-hover);
+}
+
+#palette td.active {
+   background-color: var(--color-hover);
+   font-weight: bold;
+   border: .2rem solid var(--block-line);
+}
+
+h2 {
+   font-size: 2rem;
+}
+
+#high-scores{
+   border-collapse: collapse;
+   margin:auto;
+   width: 16rem;
+   height: auto;
+   color : var(--digits)
+}
+
+#high-scores thead{
+   border-bottom: .1rem solid var(--block-line);
+}
+
+/* #high-scores thead th{
+   text-align : left;
+} */
+
+
+#high-scores td, #high-scores th{
+   text-align: left;
+   padding : 0.5rem 1rem;
+}
+
+#high-scores tbody tr th{
+   font-weight: normal ;
+}
+
+#board td.user-input {
+   color: var(--color-user-input);
+}
+
+#board td.error {
+   color: var(--color-error);
+}
+
+
+
+
+
+
+
+
+
+/* h1{
+   margin-top: 2rem;
+} */
+
+/* ---- high-scores table  (requirement 8) ---------------------------- */
+/* TODO: comfortable padding; left-aligned headings; an underline under
+   the header row of .scores. */
